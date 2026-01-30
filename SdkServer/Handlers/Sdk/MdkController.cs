@@ -9,7 +9,7 @@ namespace KianaBH.SdkServer.Models.Sdk;
 public class MdkController : Controller
 {
     [HttpPost("/{productName}/mdk/shield/api/login")]
-    public async Task<IActionResult> MdkShieldLogin(string productName, [FromBody] MdkShieldLoginRequest request)
+    public IActionResult MdkShieldLogin(string productName, [FromBody] MdkShieldLoginRequest request)
     {
         var account = AccountData.GetAccountByUserName(request.Account!);
 
@@ -31,6 +31,16 @@ public class MdkController : Controller
             account = AccountData.GetAccountByUserName(request.Account!)!;
         };
 
+        if (account == null)
+        {
+            return Ok(new ResponseBase
+            {
+                Retcode = -101,
+                Success = false,
+                Message = "Account not found"
+            });
+        }
+
         return Ok(new MdkShieldResponse
         {
             Data = new MdkShieldResponse.MdkShieldResponseData
@@ -42,7 +52,7 @@ public class MdkController : Controller
                     Name = account.Username,
                     Realname = account.Username,
                     IsEmailVerify = "0",
-                    Email = $"{account!.Username}@neonteam.dev",
+                    Email = $"{account.Username}@neonteam.dev",
                     AreaCode = "**",
                     Country = "US",
                 },
@@ -51,7 +61,7 @@ public class MdkController : Controller
     }
 
     [HttpPost("/{productName}/mdk/shield/api/verify")]
-    public async Task<IActionResult> MdkShieldVerify(string productName, [FromBody] MdkShieldVerifyRequest request)
+    public IActionResult MdkShieldVerify(string productName, [FromBody] MdkShieldVerifyRequest request)
     {
         int accountUid;
         try

@@ -22,16 +22,16 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
             case ItemMainTypeEnum.Material:
                 GameData.MaterialData.TryGetValue(itemId, out var materialConfig);
                 if (materialConfig == null) return null;
-                itemData = await PutItem(itemId, count, type);
+                itemData = PutItem(itemId, count, type);
                 break;
             case ItemMainTypeEnum.Weapon:
                 GameData.WeaponData.TryGetValue(itemId, out var weaponConfig);
                 if (weaponConfig == null) return null;
-                itemData = await PutItem(itemId, 1, type, level, equipAvatar: equipAvatar, uniqueId: ++Data.NextUniqueId);
+                itemData = PutItem(itemId, 1, type, level, equipAvatar: equipAvatar, uniqueId: ++Data.NextUniqueId);
                 break;
             case ItemMainTypeEnum.Stigmata:
                 GameData.StigmataData.TryGetValue(itemId, out var stigmataConfig);
-                itemData = await PutItem(itemId, 1, type, level, uniqueId: ++Data.NextUniqueId);
+                itemData = PutItem(itemId, 1, type, level, uniqueId: ++Data.NextUniqueId);
                 break;
             default:
                 break;
@@ -42,7 +42,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         return itemData;
     }
 
-    public async ValueTask<ItemData> PutItem(int itemId, int count, ItemMainTypeEnum type, int level = 0,
+    public ItemData PutItem(int itemId, int count, ItemMainTypeEnum type, int level = 0,
         int exp = 0, int equipAvatar = 0, int uniqueId = 0)
     {
         var item = new ItemData
