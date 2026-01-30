@@ -54,7 +54,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : KcpCo
         await ReceiveLoop();
     }
 
-    public override async void Stop(bool isServerStop = false)
+    public override void Stop(bool isServerStop = false)
     {
         //if (isServerStop) await Player!.SendPacket(new PacketPlayerKickOutScNotify(KickType.KickLoginWhiteTimeout));
         Player?.OnLogoutAsync();

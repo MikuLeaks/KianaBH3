@@ -9,7 +9,7 @@ namespace KianaBH.SdkServer.Handlers.Sdk;
 public class ComboGranterController : Controller
 {
     [HttpPost("/{productName}/combo/granter/login/v2/login")]
-    public async Task<IActionResult> ComboLoginV2(string productName, [FromBody] ComboGranterRequest request)
+    public IActionResult ComboLoginV2(string productName, [FromBody] ComboGranterRequest request)
     {
         // TODO: Reuse this logic with MDK Controller Verify Token
 
