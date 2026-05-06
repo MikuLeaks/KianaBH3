@@ -1,10 +1,13 @@
 ﻿using KianaBH.Data;
+using KianaBH.Enums.Item;
 using KianaBH.GameServer.Command;
 using KianaBH.Internationalization;
+using KianaBH.Proto;
 using KianaBH.Util;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json.Serialization;
+using static KianaBH.Proto.MahouCardHandCardChangeNotify.Types;
 
 namespace KianaBH.KianaBH.Tool;
 
@@ -12,14 +15,19 @@ public static class HandbookGenerator
 {
     public static void GenerateAll()
     {
+        Logger.GetByClassName()
+            .Info(I18NManager.Translate("Server.ServerInfo.CheckingIfRegenerating", I18NManager.Translate("Word.Handbook")));
+
         var directory = new DirectoryInfo(ConfigManager.Config.Path.ResourcePath + "/TextMap");
         var handbook = new DirectoryInfo(ConfigManager.Config.Path.HandbookPath);
         if (!handbook.Exists) handbook.Create();
         if (!directory.Exists) return;
 
+        //Iterate over every file in the Resources/TextMap directory
         foreach (var langFile in directory.GetFiles())
         {
             if (langFile.Extension != ".json") continue;
+            //TextMapEN.json -> EN.json -> EN
             var lang = langFile.Name.Replace("TextMap", "").Replace(".json", "");
 
             // Check if handbook needs to regenerate
@@ -31,22 +39,25 @@ public static class HandbookGenerator
                     continue; // Skip if handbook is newer than language file
             }
 
-            Generate(lang);
+            if (Generate(lang))
+                Logger.GetByClassName()
+                    .Info(I18NManager.Translate("Server.ServerInfo.GeneratedItem", handbookPath));
         }
 
         Logger.GetByClassName()
-            .Info(I18NManager.Translate("Server.ServerInfo.GeneratedItem", I18NManager.Translate("Word.Handbook")));
+            .Info(I18NManager.Translate("Server.ServerInfo.Done"));
     }
 
-    public static void Generate(string lang)
+    public static bool Generate(string lang)
     {
+        //Why are we recalculating the path here... We already got the path above
         var textMapPath = ConfigManager.Config.Path.ResourcePath + "/TextMap/TextMap" + lang + ".json";
         
         if (!File.Exists(textMapPath))
         {
             Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", textMapPath,
                 I18NManager.Translate("Word.NotFound")));
-            return;
+            return false;
         }
 
         List<TextMapEntry> textMapList = JsonConvert.DeserializeObject<List<TextMapEntry>>(File.ReadAllText(textMapPath))!;
@@ -55,7 +66,7 @@ public static class HandbookGenerator
         {
             Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", textMapPath,
                 I18NManager.Translate("Word.Error")));
-            return;
+            return false;
         }
 
         Dictionary<long, string> textMap = [];
@@ -63,7 +74,7 @@ public static class HandbookGenerator
         foreach (var map in textMapList) textMap.Add(map.Value!.Hash, map.Text!);
 
         var builder = new StringBuilder();
-        builder.AppendLine("#Handbook generated in " + DateTime.Now.ToString("yyyy/MM/dd HH:mm"));
+        builder.AppendLine("#Handbook generated on " + DateTime.Now.ToString("yyyy/MM/dd HH:mm"));
         builder.AppendLine();
         builder.AppendLine("#Command");
         builder.AppendLine();
@@ -90,7 +101,25 @@ public static class HandbookGenerator
         GenerateWeapon(builder, textMap);
 
         builder.AppendLine();
+        builder.AppendLine("#Material");
+        builder.AppendLine();
+        GenerateMaterial(builder, textMap);
+
+        builder.AppendLine();
+        builder.AppendLine("#Material (Invalid)");
+        builder.AppendLine("#These materials have been marked as invalid for the inventory. They may be from a previous version of the game or related to shop functionality.");
+        builder.AppendLine();
+        GenerateInvalidMaterial(builder, textMap);
+
+        builder.AppendLine();
+        builder.AppendLine("#Fragment");
+        builder.AppendLine();
+        GenerateFragment(builder, textMap);
+
+
+        builder.AppendLine();
         WriteToFile(lang, builder.ToString());
+        return true;
     }
 
     public static void GenerateCmd(StringBuilder builder, string lang)
@@ -141,6 +170,40 @@ public static class HandbookGenerator
         {
             var name = map.TryGetValue(weapon.DisplayTitle.hash, out var value) ? value : $"[{weapon.DisplayTitle.hash}]";
             builder.AppendLine(weapon.ID + ": " + name);
+        }
+    }
+
+    public static void GenerateMaterial(StringBuilder builder, Dictionary<long, string> map)
+    {
+        foreach (var material in GameData.MaterialData.Values)
+        {
+            if (material.QuantityLimit > 0)
+            {
+                var name = map.TryGetValue(material.BaseType.hash, out var value) ? value : $"[{material.BaseType.hash}]";
+                builder.AppendLine(material.ID + ": " + name);
+            }
+        }
+    }
+
+    public static void GenerateInvalidMaterial(StringBuilder builder, Dictionary<long, string> map)
+    {
+        foreach (var material in GameData.MaterialData.Values)
+        {
+            if (material.QuantityLimit <= 0)
+            {
+                var name = map.TryGetValue(material.BaseType.hash, out var value) ? value : $"[{material.BaseType.hash}]";
+                builder.AppendLine(material.ID + ": " + name);
+            }
+        }
+    }
+
+    public static void GenerateFragment(StringBuilder builder, Dictionary<long, string> map)
+    {
+        //TODO: 11411 is invalid. Need some way to hide that.
+        foreach (var fragment in GameData.AvatarFragmentData.Values)
+        {
+            var name = map.TryGetValue(fragment.DisplayTitle.hash, out var value) ? value : $"[{fragment.DisplayTitle.hash}]";
+            builder.AppendLine(fragment.ID + ": " + name);
         }
     }
 }

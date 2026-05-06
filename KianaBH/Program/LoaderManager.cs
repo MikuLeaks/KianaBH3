@@ -44,6 +44,14 @@ public class LoaderManager : KianaBH
         // Starting the server
         Logger.Info(I18NManager.Translate("Server.ServerInfo.StartingServer"));
 
+        Logger.Info(@"
+    __ __ _                   ____  __  __
+   / //_/(_)___ _____  ____ _/ __ )/ / / /
+  / ,<  / / __ `/ __ \/ __ `/ __  / /_/ / 
+ / /| |/ / /_/ / / / / /_/ / /_/ / __  /  
+/_/ |_/_/\__,_/_/ /_/\__,_/_____/_/ /_/   
+                                          ");
+
         // Load the config
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Config")));
         try
@@ -152,6 +160,9 @@ public class LoaderManager : KianaBH
         }
     }
 
+    /// <summary>
+    /// Register all commands and add listeners
+    /// </summary>
     public static void InitCommand()
     {
         // Register the command handlers
@@ -170,6 +181,5 @@ public class LoaderManager : KianaBH
         IConsole.OnConsoleExcuteCommand += CommandExecutor.ConsoleExcuteCommand;
         CommandExecutor.OnRunCommand += (sender, e) => { CommandManager.HandleCommand(e, sender); };
 
-        IConsole.ListenConsole();
     }
 }

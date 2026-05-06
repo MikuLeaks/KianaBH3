@@ -42,6 +42,17 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         return itemData;
     }
 
+    /// <summary>
+    /// Adds an item to the database. Use AddItem instead to check valid IDs and sync data to client.
+    /// </summary>
+    /// <param name="itemId"></param>
+    /// <param name="count">Quanitity to add to the inventory.</param>
+    /// <param name="type"></param>
+    /// <param name="level"></param>
+    /// <param name="exp">Experience of the item (Applies to Weapon and Stigmata types)</param>
+    /// <param name="equipAvatar"></param>
+    /// <param name="uniqueId">Unique ID in the database</param>
+    /// <returns></returns>
     public async ValueTask<ItemData> PutItem(int itemId, int count, ItemMainTypeEnum type, int level = 0,
         int exp = 0, int equipAvatar = 0, int uniqueId = 0)
     {

@@ -1,6 +1,51 @@
 {
   "UseLocalCache": false,
   "Hotfixes": {
+    "8.2.0": {
+      "Asb": {
+        "Android": {
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        },
+        "Iphone": {
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        },
+        "Pc": {
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        }
+      },
+      "AsbPreDownload": {
+        "Android": {
+          "EncryptKey": "",
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        },
+        "Iphone": {
+          "EncryptKey": "",
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        }
+      },
+      "Audio": {
+        "Platform": {},
+        "Revision": 0
+      },
+      "AudioPreDownload": {
+        "EnableTime": 0.0,
+        "Platform": {},
+        "Revision": 0
+      },
+      "VideoEncrypt": {
+        "FileName": ""
+      }
+    },
     "8.2.0_os_pc": {
       "Asb": {
         "Android": {
@@ -584,7 +629,60 @@
         "FileName": "product_kr_video_encrypt_fe4aed33155528f56389a3c57ad6b2b8"
       }
     },
-    "8.2.0": {
+    "8.4.13_gf_pc_beta": {
+      "Asb": {
+        "Android": {
+          "EnableTime": 0.0,
+          "Revision": "8.4.13.0",
+          "Suffix": "4b8482e25fc8d8afbd2541f8cbe7c1dd"
+        },
+        "Iphone": {
+          "EnableTime": 0.0,
+          "Revision": "8.4.13.0",
+          "Suffix": "b6400733c7551d5e9372e7b25af1cc86"
+        },
+        "Pc": {
+          "EnableTime": 0.0,
+          "Revision": "8.4.13.0",
+          "Suffix": "e25acd0af9ba91fd4decfd832837793a"
+        }
+      },
+      "AsbPreDownload": {
+        "Android": {
+          "EncryptKey": "",
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        },
+        "Iphone": {
+          "EncryptKey": "",
+          "EnableTime": 0.0,
+          "Revision": "",
+          "Suffix": ""
+        }
+      },
+      "Audio": {
+        "Platform": {
+          "Android": "manifest_fc93af31cf0db8e483dae7158c5d74ec.m",
+          "Windows": "manifest_cb8faa17f12ef9752365657af4289d06.m",
+          "iOS": "manifest_daf3781cdd6fb5328dd4c21abbb5e9a2.m"
+        },
+        "Revision": 756598
+      },
+      "AudioPreDownload": {
+        "EnableTime": 0.0,
+        "Platform": {
+          "Android": "manifest_ea2f4e977e2658883e80527d40e68092.m",
+          "Windows": "manifest_d7d2f62561d1a732bba7c2a56871fe6f.m",
+          "iOS": "manifest_fa114f693f880cfc447114c1ff65c6b5.m"
+        },
+        "Revision": 632854
+      },
+      "VideoEncrypt": {
+        "FileName": "beta_video_encrypt_a0755879dd5a1b6e53c7451b8de88167"
+      }
+    },
+    "8.5.0": {
       "Asb": {
         "Android": {
           "EnableTime": 0.0,
@@ -682,22 +780,75 @@
         "FileName": "product_os_video_encrypt_6c9cfc2a0635fd9683ca9231363bddd1"
       }
     },
-    "8.5.0": {
+    "8.5.0_global_pc": {
       "Asb": {
         "Android": {
           "EnableTime": 0.0,
-          "Revision": "",
-          "Suffix": ""
+          "Revision": "8.5.0.0",
+          "Suffix": "93985672399f1d1f081cbefeadcceabe"
         },
         "Iphone": {
           "EnableTime": 0.0,
-          "Revision": "",
-          "Suffix": ""
+          "Revision": "8.5.0.0",
+          "Suffix": "2ab7986ab34fa0d61dae323251ac4578"
         },
         "Pc": {
           "EnableTime": 0.0,
-          "Revision": "",
-          "Suffix": ""
+          "Revision": "8.5.0.0",
+          "Suffix": "5714ee9c34797475792d4a88dc31babf"
+        }
+      },
+      "AsbPreDownload": {
+        "Android": {
+          "EncryptKey": "",
+          "EnableTime": 0.0,
+          "Revision": "8.5.0.0",
+          "Suffix": "93985672399f1d1f081cbefeadcceabe"
+        },
+        "Iphone": {
+          "EncryptKey": "",
+          "EnableTime": 0.0,
+          "Revision": "8.5.0.0",
+          "Suffix": "2ab7986ab34fa0d61dae323251ac4578"
+        }
+      },
+      "Audio": {
+        "Platform": {
+          "Android": "manifest_b1fc77a17a4f1bb15f1e7e0a27dcb9f3.m",
+          "iOS": "manifest_eed3a8d64377d79434127f9b939fb190.m",
+          "Windows": "manifest_be8c39976a1cb39a3b795218d6af3ce6.m"
+        },
+        "Revision": 767132
+      },
+      "AudioPreDownload": {
+        "EnableTime": 0.0,
+        "Platform": {
+          "Android": "manifest_b1fc77a17a4f1bb15f1e7e0a27dcb9f3.m",
+          "iOS": "manifest_eed3a8d64377d79434127f9b939fb190.m",
+          "Windows": "manifest_be8c39976a1cb39a3b795218d6af3ce6.m"
+        },
+        "Revision": 767132
+      },
+      "VideoEncrypt": {
+        "FileName": "product_west_video_encrypt_c84084f153e1248acbf9ea1aae741545"
+      }
+    },
+    "8.5.13_gf_pc_beta": {
+      "Asb": {
+        "Android": {
+          "EnableTime": 0.0,
+          "Revision": "8.5.13.0",
+          "Suffix": "7d5e337d22eb0ecda970a54815496fb4"
+        },
+        "Iphone": {
+          "EnableTime": 0.0,
+          "Revision": "8.5.13.0",
+          "Suffix": "223f186b5cd56f25ae7f809849ee977f"
+        },
+        "Pc": {
+          "EnableTime": 0.0,
+          "Revision": "8.5.13.0",
+          "Suffix": "0ae7c30fb9c74f563da107bfef9a5bf8"
         }
       },
       "AsbPreDownload": {
@@ -715,23 +866,87 @@
         }
       },
       "Audio": {
-        "Platform": {},
-        "Revision": 0
+        "Platform": {
+          "Android": "manifest_ecd46d453eebf09313925e7bac2241b6.m",
+          "Windows": "manifest_6722a33ad53975a708ee0607f81eb377.m",
+          "iOS": "manifest_34951226007216c0cbe2a63672aead30.m"
+        },
+        "Revision": 763331
       },
       "AudioPreDownload": {
         "EnableTime": 0.0,
-        "Platform": {},
-        "Revision": 0
+        "Platform": {
+          "Android": "manifest_ea2f4e977e2658883e80527d40e68092.m",
+          "Windows": "manifest_d7d2f62561d1a732bba7c2a56871fe6f.m",
+          "iOS": "manifest_fa114f693f880cfc447114c1ff65c6b5.m"
+        },
+        "Revision": 632854
       },
       "VideoEncrypt": {
-        "FileName": ""
+        "FileName": "beta_video_encrypt_b078ddf944bdef3a9032ba011cc4f8db"
       }
-    }
+    },
+	"8.8.0_global_pc":{
+		"Asb": {
+            "android": {
+                "enable_time": 0.0,
+                "revision": "8.8.0.0",
+                "suffix": "0a9b5ba140dde4a22bc26115df40c476"
+            },
+            "iphone": {
+                "enable_time": 0.0,
+                "revision": "8.8.0.0",
+                "suffix": "041c0f8cefc9a5b7281f84f617491c6c"
+            },
+            "pc": {
+                "enable_time": 0.0,
+                "revision": "8.8.0.0",
+                "suffix": "69b14c9c50d152c175ecc236b8dd7a0b"
+            }
+        },
+        "AsbPreDownload": {
+            "android": {
+                "enable_time": 1777395600.0,
+                "encrypt_key": "720B36C726E14722F7C387C79A966D2B",
+                "revision": "8.8.0.0",
+                "suffix": "0a9b5ba140dde4a22bc26115df40c476"
+            },
+            "iphone": {
+                "enable_time": 1777395600.0,
+                "encrypt_key": "720B36C726E14722F7C387C79A966D2B",
+                "revision": "8.8.0.0",
+                "suffix": "041c0f8cefc9a5b7281f84f617491c6c"
+            }
+        },
+        "Audio": {
+            "platform": {
+                "Android": "manifest_ec05e372f233b332496cd5af086d06fb.m",
+                "iOS": "manifest_9bc782151aecc89f6b5d7942404906c6.m",
+                "Windows": "manifest_3452a6696e4192dad56587d7e1b9751b.m"
+            },
+            "revision": 780423
+        },
+        "AudioPreDownload": {
+            "enable_time": 1777395600,
+            "platform": {
+                "Android": "manifest_ec05e372f233b332496cd5af086d06fb.m",
+                "iOS": "manifest_9bc782151aecc89f6b5d7942404906c6.m",
+                "Windows": "manifest_3452a6696e4192dad56587d7e1b9751b.m"
+            },
+            "revision": 780423
+        },
+        "VideoEncrypt": {
+            "filename": "product_west_video_encrypt_4b15ec90ef20bce08256e766f9a47cd0"
+        }
+	}
   },
   "AesKeys": {
-    "8.2.0": "62 63 63 34 32 62 32 65 38 66 32 31 39 66 62 38 33 38 32 64 64 36 65 64 36 65 64 34 36 34 36 38",
-    "8.3.0": "66 64 38 65 32 66 39 33 31 38 35 38 39 63 32 30 34 34 38 39 37 61 30 32 64 33 37 65 35 62 37 61",
-    "8.4.0": "31 38 61 39 37 37 64 37 33 62 63 64 37 65 33 61 37 32 31 32 32 35 62 30 31 37 34 64 66 31 37 39",
-    "8.5.0": "33 38 34 64 38 34 31 38 64 34 64 35 66 32 34 32 38 33 61 30 30 34 32 35 61 65 62 38 30 62 34 64"
+    "8.2.0":  "62 63 63 34 32 62 32 65 38 66 32 31 39 66 62 38 33 38 32 64 64 36 65 64 36 65 64 34 36 34 36 38",
+    "8.3.0":  "66 64 38 65 32 66 39 33 31 38 35 38 39 63 32 30 34 34 38 39 37 61 30 32 64 33 37 65 35 62 37 61",
+    "8.4.0":  "31 38 61 39 37 37 64 37 33 62 63 64 37 65 33 61 37 32 31 32 32 35 62 30 31 37 34 64 66 31 37 39",
+    "8.4.13": "31 38 61 39 37 37 64 37 33 62 63 64 37 65 33 61 37 32 31 32 32 35 62 30 31 37 34 64 66 31 37 39",
+    "8.5.0":  "33 38 34 64 38 34 31 38 64 34 64 35 66 32 34 32 38 33 61 30 30 34 32 35 61 65 62 38 30 62 34 64",
+    "8.5.13": "33 38 34 64 38 34 31 38 64 34 64 35 66 32 34 32 38 33 61 30 30 34 32 35 61 65 62 38 30 62 34 64",
+    "8.8.0":  "61 65 36 33 37 32 61 65 62 33 35 31 39 34 35 36 30 63 31 38 31 32 65 64 30 32 63 38 63 35 63 39"
   }
 }

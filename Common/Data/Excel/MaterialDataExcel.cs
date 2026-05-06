@@ -5,18 +5,21 @@ namespace KianaBH.Data.Excel;
 [ResourceEntity("MaterialData.json")]
 public class MaterialDataExcel : ExcelResource
 {
-    [JsonPropertyName("ID")]  public int Id { get; set; }
+    [JsonPropertyName("ID")]  public int ID { get; set; }
     [JsonPropertyName("rarity")] public int Rarity { get; set; }
     [JsonPropertyName("maxRarity")] public int MaxRarity { get; set; }
     [JsonPropertyName("quantityLimit")] public int QuantityLimit { get; set; }
+    //This JsonPropertyName doesn't seem to do anything, the parameter name controls what loads.
+    //Don't be fooled here, DisplayTitle is actually the item description!
+    [JsonPropertyName("BaseType")] public HashName BaseType { get; set; } = new();
 
     public override int GetId()
     {
-        return Id;
+        return ID;
     }
 
     public override void Loaded()
     {
-        GameData.MaterialData.Add(Id, this);
+        GameData.MaterialData.Add(ID, this);
     }
 }

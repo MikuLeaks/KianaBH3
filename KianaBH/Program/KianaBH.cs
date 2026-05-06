@@ -45,12 +45,15 @@ public class KianaBH
         await LoaderManager.InitResource();
         ResourceManager.IsLoaded = true;
 
-        HandbookGenerator.GenerateAll();
         LoaderManager.InitCommand();
+        HandbookGenerator.GenerateAll();
 
         var elapsed = DateTime.Now - time;
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerStarted",
             Math.Round(elapsed.TotalSeconds, 2).ToString(CultureInfo.InvariantCulture)));
+
+        IConsole.ListenConsole();
+
     }
 
     # region Exit

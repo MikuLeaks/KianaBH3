@@ -82,6 +82,7 @@ public class CommandTextEN
     public NoticeTextEN Notice { get; } = new();
     public HelpTextEN Help { get; } = new();
     public ValkTextEN Valk { get; } = new();
+    public GiveOneTextEN GiveOne { get; } = new();
     public GiveAllTextEN GiveAll { get; } = new();
     public ElfTextEN Elf { get; } = new();
     public AbyssTextEN Abyss { get; } = new();
@@ -118,6 +119,8 @@ public class ServerInfoTextEN
     public string NewClientSecretKey => "Client Secret Key does not exist and a new Client Secret Key is being generated.";
     public string FailedToInitializeItem => "Failed to initialize {0}.";
     public string FailedToReadItem => "Failed to read {0}, file {1}";
+    public string CheckingIfRegenerating => "Checking if {0} needs regenerating...";
+    public string Done => "Done.";
     public string GeneratedItem => "Generated {0}.";
     public string LoadedItem => "Loaded {0}.";
     public string LoadedItems => "Loaded {0} {1}(s).";
@@ -202,6 +205,26 @@ public class ValkTextEN
     public string ValkSetStar => "Set character {0}'s Resonance to {1}!";
     public string ValkSetSkillLevelAll => "Set all characters' skill levels to max!";
     public string ValkSetSkillLevel => "Set character {0}'s skill levels to max!";
+}
+
+/// <summary>
+///     path: Game.Command.GiveOne
+/// </summary>
+public class GiveOneTextEN
+{
+    public string Desc => "Gives one item of a specified type";
+
+    public string Usage =>
+        "Usage: /give material <item ID> <amount>\n" +
+        "       /give material <item ID> <amount> force";
+
+    public string GiveOneItem => "Gave {0} {1}.";
+
+    public string ItemNotExist => "This ID does not exist!";
+
+    public string FailedToAdd => "Failed to add an item with ID {0} and type {1} to the inventory. This is a server bug!";
+
+    public string InvalidQuantity => "This item cannot be added to an inventory. It may be a special item for use in the shop, or its functionality may have been removed. If you would like to add it anyways, append 'force' as the final argument of your command.";
 }
 
 /// <summary>

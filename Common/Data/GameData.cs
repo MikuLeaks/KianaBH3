@@ -11,6 +11,7 @@ public static class GameData
     public static Dictionary<int, ActivityTowerExcel> ActivityTowerData { get; private set; } = [];
     public static Dictionary<int, AffixListExcel> AffixListData { get; private set; } = [];
     public static Dictionary<int, AvatarDataExcel> AvatarData { get; private set; } = [];
+    public static Dictionary<int, AvatarFragmentDataExcel> AvatarFragmentData { get; private set; } = [];
     public static Dictionary<int, AvatarSubSkillDataExcel> AvatarSubSkillData { get; private set; } = [];
     public static Dictionary<int, AvatarTutorialExcel> AvatarTutorialData { get; private set; } = [];
     public static Dictionary<int, CollectionExcel> CollectionData { get; private set; } = [];

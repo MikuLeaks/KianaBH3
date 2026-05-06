@@ -48,7 +48,7 @@ public class CommandValk : ICommands
         if (!await arg.CheckArgCnt(2)) return;
 
         var valkId = arg.GetInt(0);
-        var level = Math.Max(1, Math.Min(80, arg.GetInt(1))); // Limit level to 1-80
+        var level = Math.Clamp(arg.GetInt(1), 1, 80); // Limit level to 1-80
 
         if (valkId == -1)
         {
@@ -82,7 +82,7 @@ public class CommandValk : ICommands
         if (!await arg.CheckArgCnt(2)) return;
 
         var valkId = arg.GetInt(0);
-        var star = Math.Max(1, Math.Min(5, arg.GetInt(1))); // Limit star to 1-5
+        var star = Math.Clamp(arg.GetInt(1), 1, 5); // Limit star to 1-5
 
         if (valkId == -1)
         {
